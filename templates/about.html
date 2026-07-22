@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block login_button %}
+{% if current_user.is_authenticated %}
+<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/dashboard">DASHBOARD</a></li>
+{% else %}
+<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/dashboard">LOG IN</a></li>
+<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/signup">SIGN UP</a></li>
+{% endif %}
+{% endblock %}
+{% block body %}
+<!-- Page Header-->
+<header class="masthead" style="background-image: url(' {{ url_for('static', filename='assets/img/about-bg.jpg') }} ')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="page-heading">
+                    <h1>About Me</h1>
+                    <span class="subheading">This is what I do.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content-->
+<main class="mb-4">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <p>{{params['about_text']}}</p>    
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

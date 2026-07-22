@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+{% block login_button %}
+{% if current_user.is_authenticated %}
+<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/dashboard">DASHBOARD</a></li>
+
+{% else %}
+<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/dashboard">LOG IN</a></li>
+<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/signup">SIGN UP</a></li>
+
+{% endif %}
+{% endblock %}
+{% block body %}
+<!-- Page Header-->
+
+{% set fname = 'assets/img/' + post.img_file %}
+<header class="masthead mb-0" style="background-image: url(' {{ url_for('static' , filename=fname) }} ')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="post-heading">
+                    <h1>{{post.title}}</h1>
+                    <h2 class="subheading">{{post.subtitle}}</h2>
+                    <span class="meta">
+                        Posted by
+                        <a href="#!">{{post.admin}}</a>
+                        on {{post.date}}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="main-container">
+    <div class="comment-reply-section">
+        <h2>Replies</h2>
+        <div id="comment-info">
+            <strong>{{comment.user}}</strong>
+            <div>{{comment.commentsonpost}}</div>
+        </div>
+        <div id="reply-form">
+            <form action="/post/{{post.slug}}/comment-{{comment.id}}" method="post" autocomplete="off">
+                <input type="text" id="reply" name="reply" placeholder="Reply to comment">
+                <button type="submit">Reply</button>
+            </form>
+        </div>
+        <div class="replies-section">
+            {% for reply in replies %}
+            <div class="replied-user">{{reply.user}}  <span>{{reply.date}}</span></div>
+            <div class="replied-comment">{{reply.reply}}</div>
+            <hr>
+            {% endfor %}
+        </div>
+    </div>
+
+</main>
+
+{% endblock %}

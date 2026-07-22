@@ -1,0 +1,93 @@
+{% extends "layout.html" %}
+{% block login_button %}
+{% if current_user.is_authenticated %}
+<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/dashboard">DASHBOARD</a></li>
+{% else %}
+<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/dashboard">LOG IN</a></li>
+<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/signup">SIGN UP</a></li>
+
+{% endif %}
+{% endblock %}
+{% block body %}
+<!-- Page Header-->
+
+{% set fname = 'assets/img/' + post.img_file %}
+<header class="masthead mb-0" style="background-image: url(' {{ url_for('static' , filename=fname) }} ')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="post-heading">
+                    <h1>{{post.title}}</h1>
+                    <h2 class="subheading">{{post.subtitle}}</h2>
+                    <span class="meta">
+                        Posted by
+                        <a href="#!">{{post.admin}}</a>
+                        on {{post.date}}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Post Content-->
+
+<main class="main-container">
+    <div class="article-buttons">
+        <!--    {% set slug = post.slug|string %}-->
+        {% if recorded_like == None %}
+        <button type="button" id="like_button" class="button-item"
+            onclick="sendLiketoServer('{{post.slug}}')">Like</button>
+        <!--    <button type="button" id="dislike_button">Dislike</button>-->
+        {% else %}
+        <button type="button" id="dislike_button" class="button-item"
+            onclick="sendDisliketoServer('{{post.slug}}')">Dislike</button>
+        {% endif %}
+
+        <!--    <button type="button" id="download_btn" onclick="Request_for_Downloads('{{post.slug}}')">Download PDF</button>-->
+        <form action="/post/{{post.slug}}/downloadpdf" method="post">
+            <button type="submit" id="download_btn" class="button-item">Download
+                PDF</button>
+        </form>
+    </div>
+    <article class="main-content">
+        {% for i in range(paras|length) %}
+        <p>{{paras[i]}}</p>
+        <!-- <img src="" alt=""> -->
+        {% endfor %}
+
+    </article>
+
+    <div class="share-section">
+        Share With :
+        <a href="# " target="_blank">Twitter</a>
+        <a href="https://t.me/shrinivas000" target="_blank">Telegram</a>
+        <a href="https://wa.me/8767474226?text=hello!" target="_blank">WhatsApp</a>
+        <a href="https://www.messenger.com/t/100052711680611" target="_blank">Facebook</a>
+    </div>
+
+    <div class="comment-section">
+        Leave A Comment
+        <form action="/post/{{post.slug}}/comment" method="post" autocomplete="off">
+            <input type="text" id="comment" name="comment" placeholder="post a comment" required>
+            <button type="submit" id="post_btn">Send</button>
+        </form>
+        {% if comments != [] %}
+        <details >
+            <summary>Comments from others</summary>
+            {% for comment in comments %}
+            <a href="/post/{{post.slug}}/comment-{{comment.id}}">
+                <div>{{comment.user}} <span>{{comment.date}}</span></div>
+                <div>{{comment.commentsonpost}}</div>
+                <hr>
+            </a>
+
+            {% endfor %}
+        </details>
+        {% else %}
+        <div></div>
+        {% endif %}
+    </div>
+
+</main>
+
+{% endblock %}

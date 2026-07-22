@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+{% block login_button %}
+<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/admin_profile">USER PROFILE</a></li>
+{% endblock %}
+{% block body %}
+<!-- Page Header-->
+<header class="masthead mb-0"
+    style="background-image: url(' {{ url_for('static' , filename='assets/img/home-bg.jpg') }} ')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <h2 style="font-size: 60px;;">Wel-Come<br> {{admin}}</h2>
+                    <span class="subheading">Manage Your Posts Here</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- message flashing starts here -->
+
+{% with messages = get_flashed_messages(with_categories = True) %}
+{% if messages %}
+{% for category, message in messages%}
+<div class="alert alert-{{category}} alert-dismissible fade show" style="--bs-alert-padding-y:0rem ;" role="alert">
+    {{message}}
+    <button type="button" class="btn-close" style="height: 0rem; padding: 14.25px; font-size: 12px;"
+        data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+
+<!-- Main Content-->
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+
+            <h2 style="margin-top: 20px;">Edit Your post</h2>
+            <form id="contactForm" action="/edit/{{post.sno}}" method="post" autocomplete="off">
+                <!-- Name input -->
+                <div class="form-floating">
+                    <input type="text" id="title" name="title" class="form-control" placeholder="Enter  title..."
+                        value="{{post.title}}" required />
+                    <label for="title">Enter Title</label>
+                </div>
+
+                <!-- Email input -->
+                <div class="form-floating">
+                    <input type="text" id="subtitle" name="subtitle" class="form-control"
+                        placeholder="Enter  subtitle..." value="{{post.subtitle}}" required />
+                    <label class="form-label" for="subtitle">Enter subtitle</label>
+                </div>
+
+                <!-- Email input -->
+                <div class="form-floating">
+                    <input type="text" id="slug" name="slug" class="form-control" placeholder="Enter  slug..."
+                        value="{{post.slug}}" required />
+                    <label class="form-label" for="slug">Enter slug</label>
+                </div>
+
+                <div class="form-floating">
+                    <input type="text" id="bgimg" name="bgimg" class="form-control" placeholder="Enter  bgimg..."
+                        value="{{post.img_file}}" />
+                    <label class="form-label" for="bgimg">Enter bg-image file</label>
+                </div>
+
+                <div class="form-floating" style="margin-top: 10px;">
+                    <input type="number" id="no_of_paras" name="no_of_paras" class="form-control"
+                        placeholder="enter no. of paragraphs" value="{{post.no_of_paras}}">
+                    <label class="form-label" for="no_of_paras">Enter No. of Paragraphs</label>
+                </div>
+
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

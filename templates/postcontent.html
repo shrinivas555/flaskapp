@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block login_button %}
+<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/admin_profile">USER PROFILE</a></li>
+{% endblock %}
+{% block body %}
+<!-- page header -->
+<header class="masthead" style="background-image: url(' {{ url_for('static' , filename='assets/img/home-bg.jpg') }} ')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <h2 style="font-size: 60px;;">Wel-Come<br> {{admin}}</h2>
+                    <span class="subheading">Manage Your Posts Here</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- main body -->
+<main class="content-body">
+    <h1>Write Article Content</h1>
+    <form class="content-form" action="/addnewpost/content/{{post.slug}}" method="post" autocomplete="off">
+        {% for i in range(post.no_of_paras) %}
+        {% set parano = names[i] %}
+        <div class="content-para">
+            <h4>Paragraph {{i+1}}</h4>
+            <textarea name= {{parano}} class="post_para" cols="30" rows="10"></textarea>
+            <!-- <input type="file" accept="ipg"> -->
+        </div>
+        {% endfor %}
+        <button class="content-btn" type="submit">Submit</button>
+    </form>
+</main>
+
+{% endblock %}

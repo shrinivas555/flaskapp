@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+{% block login_button %}
+
+{% if current_user.is_authenticated %}
+<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/dashboard">DASHBOARD</a></li>
+{% else %}
+<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/dashboard">LOG IN</a></li>
+<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/signup">SIGN IN</a></li>
+{% endif %}
+
+{% endblock %}
+{% block body %}
+<!-- Page Header-->
+<header class="masthead" style="background-image: url(' {{ url_for('static' , filename='assets/img/home-bg.jpg') }} ')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <form id="search_form" action="/search" method="get" autocomplete="off">
+                        <input type="text" name="search" id="search" placeholder="Search title/author">
+                        <button type="submit" id="search_btn">Search</button>
+                    </form>
+                    <h1>{{params['blog_heading']}}</h1>
+                    <a href="/addnewpost"><button id="newpost_btn">Post Your Article</button></a>
+                    <!--                    <h1>{{params['blog_heading']}}</h1>-->
+                    <!--                    <span class="subheading">{{params['tag_line']}}</span>-->
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content-->
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            <!-- Post preview-->
+            {% for post in posts_content %}
+            <div class="post-preview">
+                <a href="/post/{{post.slug}}">
+                    <h2 class="post-title">{{post.title}}</h2>
+                    <h3 class="post-subtitle">{{post.subtitle}}</h3>
+                </a>
+                <p class="post-meta">
+                    Posted by
+                    <a href="#!">{{post.admin}}</a>
+                    on {{post.date}}
+                    <span style="display:block">{{post.likes}} Likes</span>
+                </p>
+                {{post.content[0:52]}}....
+            </div>
+            {% endfor %}
+            <!-- Divider-->
+            <hr class="my-4">
+            <!-- Pager-->
+            {% if base_url == 'http://127.0.0.1:5000/search' %}
+            {% set href = '/search?search=' + search_query + '&page=' %}
+            {% else %}
+            {% set href  = '/?page=' %}
+            {% endif %}
+
+            {% if total_pages > current_page %}
+            <div class="d-flex justify-content-end mb-4" style="float: right;"><a class="btn btn-primary text-uppercase"
+                    href="{{href}}{{current_page + 1}}">Next &rarr;</a>
+            </div>
+            {% endif %}
+            {% if current_page > 1 %}
+            <div class="d-flex justify-content-end mb-4" style="float: left;"><a class="btn btn-primary text-uppercase"
+                    href="{{href}}{{current_page - 1}}">&larr; Previous<a>
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+{% endblock %}

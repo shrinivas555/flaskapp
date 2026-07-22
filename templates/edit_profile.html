@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signup-{{params['blog_title']}}</title>
+    <link rel="icon" type="image/x-icon" href=" {{ url_for('static', filename='assets/favicon.ico') }} " />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet"
+        type="text/css" />
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"
+        rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href=" {{ url_for('static', filename='css/styles.css') }} " rel="stylesheet" />
+</head>
+
+<body>
+    <main class="mb-4">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <div style="text-align: center; padding-top: 40px;">
+                        {% set fname = 'assets/img/' + params['edit_image'] %}
+                        <img class="mb-4" src="{{ url_for('static', filename=fname) }}" alt="" width="72" height="72">
+                        <h2 style=" color: rgb(207, 23, 82); text-shadow: 2px 2px blue;">Edit Your Profile</h2>
+                    </div>
+                    <div class="my-5">
+                        <!-- * * * * * * * * * * * * * * *-->
+                        <!-- * * SB Forms Contact Form * *-->
+                        <!-- * * * * * * * * * * * * * * *-->
+                        <!-- This form is pre-integrated with SB Forms.-->
+                        <!-- To make this form functional, sign up at-->
+                        <!-- https://startbootstrap.com/solution/contact-forms-->
+                        <!-- to get an API token!-->
+                        <form id="contactForm" action="/edit_profile" method="post" autocomplete="off">
+                            <!-- Name input -->
+                            <div class="form-floating">
+                                <input type="text" id="name" name="name" class="form-control"
+                                    placeholder="Enter  name..." value="{{admin.name}}" required />
+                                <label for="name">Enter Your Name</label>
+                            </div>
+
+                            <!-- Email input -->
+                            <div class="form-floating">
+                                <input type="email" id="email" name="email" class="form-control"
+                                    placeholder="Enter  email..." value="{{admin.email}}" required />
+                                <label class="form-label" for="email">Enter Email address</label>
+                            </div>
+
+                            <!-- Phone input -->
+                            <div class="form-floating">
+                                <input type="text" id="phone" name="phone" class="form-control"
+                                    placeholder="Enter  phone..." value="{{admin.phone}}" required />
+                                <label class="form-label" for="phone">Enter Phone Number</label>
+                            </div>
+
+                            <div class="form-floating">
+                                <input type="text" id="username" name="username" class="form-control"
+                                    placeholder="Enter  username..." value="{{admin.username}}" required />
+                                <label class="form-label" for="username">Set New username</label>
+                            </div>
+
+                            <div class="form-floating">
+                                <input type="password" id="password" name="password" class="form-control"
+                                    placeholder="Enter  password..." value="********" required />
+                                <label class="form-label" for="password">Set New password</label>
+                                <input type="checkbox" onclick=showpass()> show password
+                            </div>
+
+                            <!-- Checkbox -->
+                            <!-- <div class="form-check d-flex justify-content-center mb-4">
+                              <input class="form-check-input me-2" type="checkbox" value="" id="form4Example4" checked />
+                              <label class="form-check-label" for="form4Example4">
+                                Send me a copy of this message
+                              </label>
+                            </div> -->
+
+                            <!-- Submit button -->
+                            <button type="submit" class="btn btn-primary btn-block mb-4"
+                                style="margin-top: 20px;">Submit</button>
+                            
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+<script>
+    function showpass() {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+            x.type = "text";
+        }
+        else {
+            x.type = "password";
+        }
+    }
+</script>
+
+</html>

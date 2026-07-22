@@ -1,0 +1,25 @@
+{
+  "params":
+  {
+    "local_server": "True",
+    "local_uri": "mysql://root:@localhost/postmyarticledb",
+    "prod_uri": "mysql://root:@localhost/postmyarticledb",
+    "fb_uri": "https://facebook.com",
+    "tw_uri": "https://twitter.com",
+    "gh_uri": "https://github.com",
+    "blog_title": "PostMyArticle",
+    "blog_heading": "PostMyArticle",
+    "tag_line": "A Blog liked By Programmers",
+    "gmail-user": "postmyarticleotpsender@gmail.com",
+    "gmail-password": "tjohlnkvnjwtrmhf",
+    "about_text": "hii this is shrinivas babalgave",
+    "no_of_posts": 3,
+    "login_image": "login.png",
+    "signup_image": "login.png",
+    "edit_image": "edit.png",
+    "admin_user": "shrinivas",
+    "admin_password": "shri0000",
+    "upload_location": "C:\\Users\\hp\\PycharmProjects\\flaskapp\\static\\assets\\img"
+  }
+
+}

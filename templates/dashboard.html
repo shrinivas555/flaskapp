@@ -1,0 +1,84 @@
+{% extends "layout.html" %}
+{% block login_button %}
+<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/admin_profile">USER PROFILE</a></li>
+<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/logout">LOG OUT</a></li>
+
+{% endblock %}
+
+{% block body %}
+
+<!-- Page Header-->
+<header class="masthead mb-0" style="background-image: url(' {{ url_for('static' , filename='assets/img/home-bg.jpg') }} ')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <h2 style="font-size: 60px;;">Wel-Come<br> {{admin}}</h2>
+                    <span class="subheading">Manage Your Posts Here</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- message flashing starts here -->
+
+{% with messages = get_flashed_messages(with_categories = True) %}
+{% if messages %}
+{% for category, message in messages%}
+<div class="alert alert-{{category}} alert-dismissible fade show" style="--bs-alert-padding-y:0rem ;" role="alert">
+  {{message}}
+  <button type="button" class="btn-close" style="height: 0rem; padding: 14.25px; font-size: 12px;" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<!-- Main Content-->
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+            <h2 style="margin-top: 20px;">Basic Actions</h2>
+            <a href="/addnewpost"><button class="btn btn-primary">Add A New POst</button></a>
+            <a href="/logout"><button class="btn btn-primary">Logout</button></a>
+            <hr>
+
+            <h2>Upload A File</h2>
+            <form action="/uploader" method="post" enctype="multipart/form-data">
+                <input type="file" name="file">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+
+
+            <hr>
+            <h2>Edit/Delete Posts</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Sno</th>
+                        <th>Post Title</th>
+                        <th>Last Modified On</th>
+                        <th>Likes</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for post in posts %}
+                    <tr>
+                        <td>{{post.sno}}</td>
+                        <td>{{post.title}}</td>
+                        <td>{{post.date}}</td>
+                        <td>{{post.likes}}</td>
+                        <td><a href="/edit/{{post.sno}}"><button class="btn btn-primary">Edit</button></a></td>
+                        <td><a href="/delete/{{post.sno}}"><button class="btn btn-primary">Delete</button></a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

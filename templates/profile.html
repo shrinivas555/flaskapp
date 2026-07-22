@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+
+{% block body %}
+<!-- Page Header-->
+<header class="masthead mb-0" style="background-image: url(' {{ url_for('static' , filename='assets/img/home-bg.jpg') }} ')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <h2 style="font-size: 60px;;">Wel-Come<br> {{admin}}</h2>
+                    <span class="subheading">Manage Your Posts Here</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- mesaage flashing starts here -->
+
+{% with messages = get_flashed_messages(with_categories = True) %}
+{% if messages %}
+{% for category, message in messages%}
+<div class="alert alert-{{category}} alert-dismissible fade show" style="--bs-alert-padding-y:0rem ;" role="alert">
+  {{message}}
+  <button type="button" class="btn-close" style="height: 0rem; padding: 14.25px; font-size: 12px;" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<main class="mb-4 mt-5">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div style="color: blueviolet; font-family: 'Times New Roman', Times, serif;">Name :</div>
+                <div style="font-family: 'Times New Roman', Times, serif;">{{info.name}}</div><hr>
+                <div style="color: blueviolet; font-family: 'Times New Roman', Times, serif;">Email ID :</div>
+                <div style="font-family: 'Times New Roman', Times, serif;">{{info.email}}</div><hr>
+                <div style="color: blueviolet; font-family: 'Times New Roman', Times, serif;">Phone :</div>
+                <div style="font-family: 'Times New Roman', Times, serif;">{{info.phone}}</div><hr>
+                <div style="color: blueviolet; font-family: 'Times New Roman', Times, serif;">Username :</div>
+                <div style="font-family: 'Times New Roman', Times, serif;">{{info.username}}</div><hr>
+                <div style="color: blueviolet; font-family: 'Times New Roman', Times, serif;">Password :</div>
+                <div style="margin: 0px; font-weight:900;">********</div><hr>
+                <div style="color: blueviolet; font-family: 'Times New Roman', Times, serif;">Last Modified On : :</div>
+                <div style="font-family: 'Times New Roman', Times, serif;">{{info.date}}</div><hr>
+                <a href="/edit_profile"><button class="btn btn-primary" style="margin-top: 50px;">Edit Your Profile</button></a>
+                <a href="/dashboard"><button class="btn btn-primary" style="margin-top: 50px;">Go To Dashboard</button></a>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}

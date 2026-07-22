@@ -1,0 +1,27 @@
+# virtual environment
+.venv/
+venv/
+env/
+ENV/
+
+# pythin bytecode and cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# environment variables and secretes
+.env
+.flaskenv/
+instance/
+
+#databases
+
+*.db
+*.sqlite
+
+# IDEs and system files
+.vscode/
+.idea/
+.DS_Store

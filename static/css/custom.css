@@ -1,0 +1,267 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+#search_form {
+    margin-left: 50px;
+
+}
+
+#search {
+    background: rgb(181, 175, 175);
+    color: black;
+    outline: none;
+    width: 350px;
+    height: 30px;
+}
+
+#search_btn {
+
+    margin: 10px;
+    background: blue;
+    color: white
+}
+
+#newpost_btn{
+    padding: 10px;
+    margin-top: 10px;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+
+}
+
+.main-container{
+    padding: 50px 20px;
+    /* margin: 0px 0px;/ */
+    background-color:antiquewhite;
+    
+}
+
+.article-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    margin-right: 5rem;
+    padding-right: 5rem;
+    /* border: 2px solid black; */
+    /* float: right; */
+
+}
+
+.button-item{
+    /* background-color: red; */
+    color: white;
+    font-weight: bold;
+    padding: 5px;
+    margin-right: 20px;
+    border-radius: 10px;
+
+}
+
+#like_button{
+    background-color: green;
+}
+
+#dislike_button{
+    background-color: red;
+}
+
+#download_btn{
+    background-color: blue;
+}
+
+.main-content{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    /* border: 2px solid black; */
+    padding: 20px 10px;
+    /* margin: auto;s */
+}
+
+.main-content p{
+    margin: 0px 2rem;
+    padding: 5px 10rem;
+
+}
+
+.share-section{
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    margin: 0px 2rem;
+    padding: 2rem 10rem;
+    font-weight: bold;
+    font-size: 20px;
+    color: rgb(37, 37, 113);
+    border: 2pz solid black;
+    /* background-color: red; */
+}
+
+.share-section a{
+    display: inline;
+    /* border: 2px solid black; */
+    padding-left: 1rem;
+    width: 15%;
+    margin-top: 10px;
+    font-weight: normal
+}
+
+
+.comment-section{
+    /* border: 2px solid black */
+    ;margin: 0px 2rem;
+    padding: 5px 10rem;
+    font-weight: bolder;
+    font-size: 25px;
+
+}
+
+.comment-section form{
+    display: block;
+    font-size: 15px;
+    padding: 20px;
+    /* background-color: red; */
+}
+
+.comment-section form input{
+    width: 25%;
+    outline: none;
+}
+
+.comment-section form button{
+    width: 60px;
+    color: white;
+    font-weight: bold;
+    /* padding: 3px; */
+    margin-right: 20px;
+    border-radius: 10px;
+    background-color: blueviolet;
+}
+
+.comment-section details{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.comment-section details a{
+    /* padding: 5px; */
+    font-weight: normal;
+}
+
+.comment-section details a :nth-child(1){
+    padding-left: 1.5rem;
+}
+
+.comment-section details a :nth-child(2){
+    padding-left: 2.5rem;
+}
+
+.comment-reply-section{
+    /* background-color: aqua; */
+    display: flex;
+    flex-direction: column;
+    margin: 0px 2rem;
+    padding: 5px 10rem;
+}
+
+.comment-reply-section h2{
+    padding-bottom: 10px;
+    font-size: 35px;
+    font-weight: bold;
+    /* color: blue; */
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.comment-reply-section #comment-info{
+    padding-top: 1rem;
+    padding-left: 1rem;
+    font-size: 25px;
+}
+
+.comment-reply-section #comment-info div{
+    padding-left: 1rem;
+    font-size: 25px;
+}
+
+.comment-reply-section #reply-form{
+    padding-top: 1rem;
+    padding-left: 1rem;
+    font-size: 15px;
+}
+
+.comment-reply-section #reply-form input{
+   width: 25%;
+   outline: none;
+}
+
+.comment-reply-section #reply-form button{
+    padding: 3px;
+    border-radius: 10px;
+    margin-left: 5px;
+    color: white;
+    background-color: blueviolet;
+ }
+
+ .replies-section{
+    padding-top: 1rem;
+    padding-left: 3rem;
+ }
+
+ .replied-user{
+    font-size: 22px;
+    font-weight: bold;
+ }
+
+ .replied-comment{
+    padding-left: 1rem;
+    font-size: 22px;
+    /* font-weight: bold; */
+ }
+
+ .content-body{
+    padding-left: 20px;
+    margin: 5px;
+ }
+
+.content-body h1{
+    font-size: 2.5rem;
+    font-weight: 700;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.content-form{
+    padding: 2rem;
+    margin: 5px;
+}
+
+.content-form h4{
+    font-size: 1.5rem;
+    font-weight: 300;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.content-form textarea{
+    padding: 10px;
+    margin-bottom: 12px;
+    outline: none;
+    width: 50%;
+    height: 250px;
+}
+
+.content-btn{
+    padding: 8px;
+    margin-top: 10px;
+    background-color: blue;
+    color: white;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.content-btn:hover{
+    background-color: rgb(3, 3, 61);
+}

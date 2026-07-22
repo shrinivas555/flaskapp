@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+{% block login_button %}
+<li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/admin_profile">USER PROFILE</a></li>
+{% endblock %}
+{% block body %}
+<!-- Page Header-->
+<header class="masthead" style="background-image: url(' {{ url_for('static' , filename='assets/img/home-bg.jpg') }} ')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <h2 style="font-size: 60px;;">Wel-Come<br> {{admin}}</h2>
+                    <span class="subheading">Manage Your Posts Here</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Main Content-->
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="col-md-10 col-lg-8 col-xl-7">
+
+            <h2>Add New post</h2>
+            <form id="contactForm" action="/addnewpost" method="post" autocomplete="off">
+                <!-- Name input -->
+                <div class="form-floating">
+                    <input type="text" id="title" name="title" class="form-control" placeholder="Enter  title..."
+                        required />
+                    <label for="title">Enter Title</label>
+                </div>
+
+                <!-- Email input -->
+                <div class="form-floating">
+                    <input type="text" id="subtitle" name="subtitle" class="form-control"
+                        placeholder="Enter  subtitle..." required />
+                    <label class="form-label" for="subtitle">Enter subtitle</label>
+                </div>
+
+                <!-- Email input -->
+                <div class="form-floating">
+                    <input type="text" id="slug" name="slug" class="form-control" placeholder="Enter  slug..."
+                        required />
+                    <label class="form-label" for="slug">Enter slug</label>
+                </div>
+
+                <div class="form-floating">
+                    <input type="text" id="bgimg" name="bgimg" class="form-control" placeholder="Enter  bgimg..." />
+                    <label class="form-label" for="bgimg">Enter bg-image file</label>
+                </div>
+
+                <!-- contebt input -->
+                <div class="form-floating" style="margin-top: 10px;">
+                    <input type="number" id="no_of_paras" name="no_of_paras" class="form-control" placeholder="enter no. of paragraphs">
+                    <label class="form-label" for="no_of_paras">Enter No. of Paragraphs</label>
+                </div>
+
+                <!-- Checkbox -->
+                <!-- <div class="form-check d-flex justify-content-center mb-4">
+                  <input class="form-check-input me-2" type="checkbox" value="" id="form4Example4" checked />
+                  <label class="form-check-label" for="form4Example4">
+                    Send me a copy of this message
+                  </label>
+                </div> -->
+
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-primary btn-block mb-4">Next</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
