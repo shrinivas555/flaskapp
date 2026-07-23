@@ -11,8 +11,16 @@ with open ("config.json","r") as c:
 
     # configuroing database in flask application
 app.secret_key = 'super-secret-key'
-app.config["SQLALCHEMY_DATABASE_URI"] = params["local_uri"]
-app.config["SQLALCHEMY_TRACK_MODIFICATION"] = True
+app.config["SQLALCHEMY_DATABASE_URI"] = params["prod_uri"]
+app.config["SQLALCHEMY_TRACK_MODIFICATION"] = False
+app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
+    "connect_args": {
+        "ssl": {
+            "sslmode": "REQUIRED",
+            "ca": requiredmodules.os.path.join(requiredmodules.os.path.abspath(requiredmodules.os.path.dirname(__file__)), "ca.pem")
+        }
+    }
+}
 db = requiredmodules.SQLAlchemy()
 db.init_app(app)
 

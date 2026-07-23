@@ -3,7 +3,6 @@
   {
     "local_server": "True",
     "local_uri": "mysql://root:@localhost/postmyarticledb",
-    "prod_uri": "mysql://root:@localhost/postmyarticledb",
     "fb_uri": "https://facebook.com",
     "tw_uri": "https://twitter.com",
     "gh_uri": "https://github.com",

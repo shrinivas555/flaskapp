@@ -12,3 +12,4 @@ from flask_login import LoginManager, current_user, login_user, logout_user, log
 import random
 # from flask_share import Share
 from fpdf import FPDF
+import pymysql
