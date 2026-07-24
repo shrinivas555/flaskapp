@@ -18,7 +18,8 @@
     "edit_image": "edit.png",
     "admin_user": "shrinivas",
     "admin_password": "shri0000",
-    "upload_location": "C:\\Users\\hp\\PycharmProjects\\flaskapp\\static\\assets\\img"
+//    "upload_location": "C:\\Users\\hp\\PycharmProjects\\flaskapp\\static\\assets\\img"
+    "upload_location": "\\assets\\img"
   }
 
 }
