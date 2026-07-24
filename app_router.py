@@ -454,6 +454,7 @@ def uploader():
         rm.flash("Uour file uploaded successfully", "success")
 
         return rm.redirect("/dashboard")
+    return None
 
                                             # METHODS TO LOGOUT
 
