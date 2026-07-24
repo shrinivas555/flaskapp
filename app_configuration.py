@@ -14,11 +14,10 @@ app.secret_key = 'super-secret-key'
 # app.config["SQLALCHEMY_DATABASE_URI"] = params["prod_uri"]
 app.config["SQLALCHEMY_DATABASE_URI"] = requiredmodules.os.environ.get('PROD_URI')
 app.config["SQLALCHEMY_TRACK_MODIFICATION"] = False
-app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
+app.config["SQLALCHEMY_ENGINE_OPTIONS"] = {
     "connect_args": {
         "ssl": {
-            "sslmode": "REQUIRED",
-            "ca": requiredmodules.os.path.join(requiredmodules.os.path.abspath(requiredmodules.os.path.dirname(__file__)), "ca.pem")
+            "ssl_ca": requiredmodules.os.path.join(requiredmodules.os.path.dirname(__file__), "ca.pem")
         }
     }
 }
