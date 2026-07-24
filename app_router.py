@@ -1,5 +1,4 @@
-
-                                            # IMPORTS
+import datetime  # IMPORTS
 
 # imort app_configuration file as ac
 import requiredmodules as rm
@@ -494,7 +493,7 @@ def signup():
         phone = rm.request.form.get('phone')
         username = rm.request.form.get('username')
         password = rm.request.form.get('password')
-        date = rm.datetime.now()
+        date = rm.datetime.now(datetime.timezone.utc)
         entry = dm.Admins(name=name, email=email, phone=phone, username=username,
                        password=ac.bcrypt.generate_password_hash(password), date=date)
         ac.db.session.add(entry)
