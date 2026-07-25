@@ -173,9 +173,9 @@ def create_pdf(post_slug):
 
     pdf.set_font('Arial', '', 12)
     for i in range(len(paragraphs)):
-        clean_latin1_text(paragraphs[i])
+        # clean_latin1_text(paragraphs[i])
         pdf.cell(190, 5, txt='', ln=1, align='R', border=0)
-        pdf.multi_cell(190, 5, txt=paragraphs[i], align='L', border=0)
+        pdf.multi_cell(190, 5, txt=clean_latin1_text(paragraphs[i]), align='L', border=0)
 
     save_location = rm.os.path.join(ac.app.root_path, 'static', 'assets', filename)
     return pdf.output(save_location)
