@@ -32,9 +32,12 @@ bcrypt.init_app(app)
     # configuring file uploader
 
 # app.config["UPLOAD_FOLDER"] = params["upload_location"]
-base_static_url = requiredmodules.url_for('static')
-image_upload_location = params["upload_location"]
-app.config["UPLOAD_FOLDER"] = f"static{image_upload_location}"
+# base_static_url = requiredmodules.url_for('static')
+# image_upload_location = params["upload_location"]
+upload_folder = requiredmodules.os.path.join(app.root_path, '/static/assets/img')
+requiredmodules.os.makedirs(upload_folder, exist_ok=True)
+app.config["UPLOAD_FOLDER"] = upload_folder
+
 
     # creating an instant of LoginManager()
 
