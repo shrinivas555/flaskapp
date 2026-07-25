@@ -130,7 +130,20 @@ def download_pdf(post_slug):
         return rm.send_file(file_path, as_attachment=True)
     return "please log in and download PDF dear friend"
 
-
+def clean_latin1_text(text):
+    if not text:
+        return ""
+    replacements = {
+        "\u2018" : "'",
+        "\u2019" : "'",
+        "\u201c" : '"',
+        "\u201d" : '"',
+        "\u2013" : "-",
+        "\u2014" : "_"
+    }
+    for original, replacement in replacements.items():
+        text = text.replace(original, replacement)
+    return text
 
 def create_pdf(post_slug):
     post = dm.Posts.query.filter_by(slug=post_slug).first()
@@ -160,6 +173,7 @@ def create_pdf(post_slug):
 
     pdf.set_font('Arial', '', 12)
     for i in range(len(paragraphs)):
+        clean_latin1_text(paragraphs[i])
         pdf.cell(190, 5, txt='', ln=1, align='R', border=0)
         pdf.multi_cell(190, 5, txt=paragraphs[i], align='L', border=0)
 
