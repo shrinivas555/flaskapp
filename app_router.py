@@ -125,7 +125,7 @@ def download_pdf(post_slug):
         create_pdf(post_slug)
         post = dm.Posts.query.filter_by(slug=post_slug).first()
         filename = post.title + '_' + post_slug + '.pdf'
-        file_path = rm.os.path.join(ac.params['upload_location'], filename)
+        file_path = rm.os.path.join(ac.app.root_path, 'static', 'assets', filename)
         # rm.os.remove(file_path)
         return rm.send_file(file_path, as_attachment=True)
     return "please log in and download PDF dear friend"
@@ -163,7 +163,7 @@ def create_pdf(post_slug):
         pdf.cell(190, 5, txt='', ln=1, align='R', border=0)
         pdf.multi_cell(190, 5, txt=paragraphs[i], align='L', border=0)
 
-    save_location = rm.os.path.join(ac.params['upload_location'], filename)
+    save_location = rm.os.path.join(ac.app.root_path, 'static', 'assets', filename)
     return pdf.output(save_location)
 
                                     # METHODS FOR DISPLAYINF ARTICLES ON HOMEPAGE
